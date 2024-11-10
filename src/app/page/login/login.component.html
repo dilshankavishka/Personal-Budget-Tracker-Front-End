@@ -1,0 +1,15 @@
+<div class="login-container">
+    <div class="login-card text-center">
+        <h2 class="mb-5">Login</h2>
+        <img src="usericon.jpg" alt="Profile Image">
+        
+            <div class="mb-3">
+                <input type="text" class="form-control" [(ngModel)]="user.username" placeholder="Username" required>
+            </div>
+            <div class="mb-4">
+                <input type="password" class="form-control" [(ngModel)]="user.password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-50" (click)="login()">LOGIN</button>
+        
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="login-container">
+    <div class="login-card text-center">
+        <h2 class="mb-4">Sign Up</h2>
+        <img src="usericon.jpg" alt="Profile Image">
+        
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Username" [(ngModel)]="user.username" required>
+            </div>
+            <div class="mb-4">
+                <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" required>
+            </div>
+            <div class="mb-4">
+                <input type="password" class="form-control" placeholder="Repeat Password" [(ngModel)]="user.repeatPassword" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-50" (click)="signUp()">SIGN UP</button>
+        
+    </div>
+</div>
