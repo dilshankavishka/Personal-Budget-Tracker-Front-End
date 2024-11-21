@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SharedService } from '../../SharedService';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private http:HttpClient, private router: Router){}
+  constructor(private http:HttpClient, private router: Router, private sharedService:SharedService){}
 
   public usercheck:any = null;
 
@@ -30,6 +31,9 @@ export class LoginComponent {
 
       if (this.usercheck && this.usercheck.password === this.user.password) {
         alert("Login successful!");
+        this.sharedService.setUsername(this.user.username);
+        console.log('Username set in SharedService:', this.sharedService.getUsername());
+
         this.router.navigate(['/all-expenses']);  // Replace '/all-expenses' with the desired route
       } else if (this.usercheck) {
         alert("Invalid password. Please try again.");
@@ -43,5 +47,5 @@ export class LoginComponent {
     });
 
   }
-  
+
 }

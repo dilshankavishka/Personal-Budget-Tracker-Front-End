@@ -1,13 +1,13 @@
-<div style="width: 65%;  margin: auto;" >
+<div style="width: 65%;  margin: auto;">
     <!-- Title for the Bar Chart -->
-    <h2>Monthly Expenses</h2>
+    <h2>Monthly Income</h2>
     
     <!-- Bar Chart using Chart.js -->
     <canvas #barChart></canvas>
     
     <!-- Current Month's Expenses Breakdown -->
     <div style="margin-top: 20px;">
-      <h3>Current Month's Expenses by Category</h3>
+      <h3>Current Month's Income by Category</h3>
       <ul>
         <li *ngFor="let item of categoryData">
           {{ item.month }}: LKR {{ item.totalAmount | number:'1.2-2' }}

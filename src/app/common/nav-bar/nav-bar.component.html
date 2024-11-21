@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Personal Budget Tracker</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,20 +8,30 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" routerLink="all-expenses" >Manage Expenses</a>
+          <a class="nav-link active" aria-current="page" href="#" routerLink="all-expenses" *ngIf="isLoggedIn()">Manage Expenses</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="add-expense" >Add Expense</a>
+          <a class="nav-link active" aria-current="page" href="#" routerLink="all-incomes" *ngIf="isLoggedIn()">Manage Incomes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="add-expense" >Expense Graph</a>
+          <a class="nav-link" href="#" routerLink="add-expense" *ngIf="isLoggedIn()">Add Expense</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="add-income" *ngIf="isLoggedIn()">Add Income</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="isLoggedIn()">
+            Chart
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" routerLink="expense-graph" >Expense Chart</a></li>
+            <li><a class="dropdown-item" href="#" routerLink="income-graph" >Income Chart</a></li>
+          </ul>
+          
         </li>
         
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </ul>             
+        <button class="btn btn-outline-success" type="submit" (click)="logout()" *ngIf="isLoggedIn()" routerLink="">Logout</button>
     </div>
   </div>
 </nav>

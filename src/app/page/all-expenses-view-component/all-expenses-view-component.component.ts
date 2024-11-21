@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { SharedService } from '../../SharedService';
 
 @Component({
   selector: 'app-all-expenses-view-component',
@@ -12,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AllExpensesViewComponentComponent {
 
-  constructor(private http:HttpClient){
+  constructor(private http:HttpClient, private sharedService: SharedService){
     this.loadTable();  
   }
     public expenses:any = [];
@@ -38,7 +39,7 @@ export class AllExpensesViewComponentComponent {
 
   deleteExpense(id:any){
     console.log(id);
-
+    
     this.http.delete(`http://localhost:8080/expense/delete-by-id/${id}`).subscribe(data=>{
       alert("expense deleted !!!!");
       this.loadTable();
@@ -47,7 +48,7 @@ export class AllExpensesViewComponentComponent {
 }
 
   loadTable(){
-    this.http.get("http://localhost:8080/expense/get-all").subscribe(data=>{
+    this.http.get(`http://localhost:8080/expense/get-all/${this.sharedService.getUsername()}`).subscribe(data=>{
       console.log(data);
       this.expenses=data;
       
